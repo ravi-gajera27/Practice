@@ -1,0 +1,28 @@
+<form #f="ngForm">
+  <input type="text" placeholder="name" name="uname" required ngModel />
+  <input type="text" placeholder="mobileNo" name="mobile" required ngModel />
+  <input type="hidden" name="_id" ngModel />
+  <button *ngIf="!updateDet" role="submit" (click)="onSubmit(f)">Submit</button>
+  <button *ngIf="updateDet" role="button" (click)="onUpdate($event)">
+    Update
+  </button>
+</form>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>MobileNo</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let ele of contactDetails">
+    <td>
+      {{ ele.uname }}
+    </td>
+    <td>
+      {{ ele.mobileNo }}
+    </td>
+    <td><p (click)="update(ele)">update</p></td>
+    <td><p (click)="delete(ele)">delete</p></td>
+  </tr>
+</table>
